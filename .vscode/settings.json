@@ -1,3 +1,4 @@
 {
-	"cSpell.words": ["Ecommerce", "Excellis"]
+	"cSpell.words": ["Ecommerce", "Excellis"],
+	"conventionalCommits.scopes": ["ecommerce-starterkit-app"]
 }

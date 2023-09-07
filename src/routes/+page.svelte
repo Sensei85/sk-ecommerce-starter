@@ -3,13 +3,40 @@
 </svelte:head>
 
 <main>
-	<div>
-		<p>
-			Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit consectetur aliquam quam id
-			laudantium dicta aspernatur dolor. Aliquid ipsum itaque, deserunt neque praesentium dolores
-			debitis, incidunt quod obcaecati minus est?
-		</p>
-	</div>
+	<section class="bg-gray-900 text-white">
+		<div class="mx-auto max-w-screen-xl px-4 py-32 lg:flex lg:h-2/3 lg:items-center">
+			<div class="mx-auto max-w-3xl text-center">
+				<h1
+					class="bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl"
+				>
+					Understand User Flow.
+
+					<span class="sm:block"> Increase Conversion. </span>
+				</h1>
+
+				<p class="mx-auto mt-4 max-w-xl sm:text-xl/relaxed">
+					Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illo tenetur fuga
+					ducimus numquam ea!
+				</p>
+
+				<div class="mt-8 flex flex-wrap justify-center gap-4">
+					<a
+						class="block w-full rounded border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-white focus:outline-none focus:ring active:text-opacity-75 sm:w-auto"
+						href="/get-started"
+					>
+						Get Started
+					</a>
+
+					<a
+						class="block w-full rounded border border-blue-600 px-12 py-3 text-sm font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring active:bg-blue-500 sm:w-auto"
+						href="/about"
+					>
+						Learn More
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
 
 	<div class="featured-products">
 		<section>
@@ -87,34 +114,4 @@
 			</div>
 		</section>
 	</div>
-
-	<!--
-  Heads up! 👋
-
-  This component comes with some `rtl` classes. Please remove them if they are not needed in your project.
--->
-
-	<section
-		class="overflow-hidden bg-[url(https://images.unsplash.com/photo-1562157873-818bc0726f68?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=654&q=80)] bg-cover bg-top bg-no-repeat"
-	>
-		<div class="bg-black/25 p-8 md:p-12 lg:px-16 lg:py-24">
-			<div class="text-center ltr:sm:text-left rtl:sm:text-right">
-				<h2 class="text-2xl font-bold text-white sm:text-3xl md:text-5xl">Latest Shirts</h2>
-
-				<p class="hidden max-w-lg text-white/90 md:mt-6 md:block md:text-lg md:leading-relaxed">
-					Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore officia corporis quasi
-					doloribus iure architecto quae voluptatum beatae excepturi dolores.
-				</p>
-
-				<div class="mt-4 sm:mt-8">
-					<a
-						href="/shop"
-						class="inline-block rounded-full bg-indigo-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-yellow-400"
-					>
-						Get Yours Today
-					</a>
-				</div>
-			</div>
-		</div>
-	</section>
 </main>

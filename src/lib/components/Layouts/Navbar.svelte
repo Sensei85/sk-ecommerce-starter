@@ -1,12 +1,13 @@
 <script>
-	import { cartItemCount } from '$lib/stores/cart';
+	import { cartItemCount, favoriteItemsCount } from '$lib/stores/cart';
+	import { isSheetOpen, favoriteSheetOpen } from '$lib/components/utils';
 </script>
 
-<header class="bg-white shadow-md sticky top-0 z-10">
+<header class="bg-white shadow-md sticky top-0 z-40">
 	<div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
 		<div class="flex h-16 items-center justify-between">
 			<div class="md:flex md:items-center md:gap-12">
-				<a class="block text-teal-600" href="/">
+				<a class="block text-yellow-600" href="/">
 					<span class="sr-only">Home</span>
 					<svg class="h-8" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path
@@ -25,12 +26,8 @@
 						</li>
 
 						<li>
-							<a class="text-gray-500 transition hover:text-gray-500/75" href="/shop"> Shop </a>
-						</li>
-
-						<li>
 							<a class="text-gray-500 transition hover:text-gray-500/75" href="/shop/products">
-								Products
+								Shop
 							</a>
 						</li>
 
@@ -44,7 +41,7 @@
 			<div class="flex items-center gap-4">
 				<div class="sm:flex sm:gap-4">
 					<a
-						class="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow"
+						class="rounded-md bg-yellow-500 px-5 py-2.5 text-sm font-medium text-white shadow"
 						href="/"
 					>
 						Login
@@ -52,7 +49,7 @@
 
 					<div class="hidden sm:flex">
 						<a
-							class="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600"
+							class="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-slate-500"
 							href="/"
 						>
 							Register
@@ -75,32 +72,73 @@
 					</button>
 				</div>
 
-				<!-- Shopping Cart Icon -->
-				<div class="relative flex items-center">
-					<button>
-						<svg
-							class="text-gray-600"
-							xmlns="http://www.w3.org/2000/svg"
-							width="28"
-							height="28"
-							viewBox="0 0 24 24"
-							><path
-								fill="currentColor"
-								d="M17 18a2 2 0 0 1 2 2a2 2 0 0 1-2 2a2 2 0 0 1-2-2c0-1.11.89-2 2-2M1 2h3.27l.94 2H20a1 1 0 0 1 1 1c0 .17-.05.34-.12.5l-3.58 6.47c-.34.61-1 1.03-1.75 1.03H8.1l-.9 1.63l-.03.12a.25.25 0 0 0 .25.25H19v2H7a2 2 0 0 1-2-2c0-.35.09-.68.24-.96l1.36-2.45L3 4H1V2m6 16a2 2 0 0 1 2 2a2 2 0 0 1-2 2a2 2 0 0 1-2-2c0-1.11.89-2 2-2m9-7l2.78-5H6.14l2.36 5H16Z"
-							/></svg
+				<div class="relative flex gap-2">
+					<!-- Favorites Icon -->
+					<div>
+						<button
+							class="hover:bg-gray-200/70 rounded-full p-2"
+							type="button"
+							on:click={() => ($favoriteSheetOpen = !$favoriteSheetOpen)}
 						>
-					</button>
-
-					<!-- Cart item count positioning -->
-					<div class="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2">
-						<!-- shopping cart count -->
-						{#if $cartItemCount}
-							<div
-								class="min-w-[1.75rem] inline-flex items-center justify-center h-7 text-l text-black bg-yellow-400 rounded-full px-1"
+							<svg
+								class="text-gray-500"
+								xmlns="http://www.w3.org/2000/svg"
+								width="28"
+								height="28"
+								viewBox="0 0 24 24"
+								><path
+									fill="currentColor"
+									d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z"
+								/></svg
 							>
-								{$cartItemCount}
-							</div>
-						{/if}
+						</button>
+						<!-- Favorite item count positioning -->
+						<div
+							class="absolute top-2 right-2 pointer-events-none transform translate-x-1/2 -translate-y-1/2"
+						>
+							<!-- Favorite item count -->
+							{#if $favoriteItemsCount}
+								<div
+									class="min-w-[1.75rem] inline-flex items-center justify-center h-7 text-l text-black bg-yellow-400 rounded-full px-1"
+								>
+									{$favoriteItemsCount}
+								</div>
+							{/if}
+						</div>
+					</div>
+
+					<!-- Shopping Cart Icon -->
+					<div>
+						<button
+							class="hover:bg-gray-200/70 rounded-full p-2"
+							type="button"
+							on:click={() => ($isSheetOpen = !$isSheetOpen)}
+						>
+							<svg
+								class="text-gray-500"
+								xmlns="http://www.w3.org/2000/svg"
+								width="28"
+								height="28"
+								viewBox="0 0 24 24"
+								><path
+									fill="currentColor"
+									d="M17 18a2 2 0 0 1 2 2a2 2 0 0 1-2 2a2 2 0 0 1-2-2c0-1.11.89-2 2-2M1 2h3.27l.94 2H20a1 1 0 0 1 1 1c0 .17-.05.34-.12.5l-3.58 6.47c-.34.61-1 1.03-1.75 1.03H8.1l-.9 1.63l-.03.12a.25.25 0 0 0 .25.25H19v2H7a2 2 0 0 1-2-2c0-.35.09-.68.24-.96l1.36-2.45L3 4H1V2m6 16a2 2 0 0 1 2 2a2 2 0 0 1-2 2a2 2 0 0 1-2-2c0-1.11.89-2 2-2m9-7l2.78-5H6.14l2.36 5H16Z"
+								/></svg
+							>
+						</button>
+						<!-- Cart item count positioning -->
+						<div
+							class="absolute top-2 right-2 pointer-events-none transform translate-x-1/2 -translate-y-1/2"
+						>
+							<!-- shopping cart count -->
+							{#if $cartItemCount}
+								<div
+									class="min-w-[1.75rem] inline-flex items-center justify-center h-7 text-l text-black bg-yellow-400 rounded-full px-1"
+								>
+									{$cartItemCount}
+								</div>
+							{/if}
+						</div>
 					</div>
 				</div>
 			</div>

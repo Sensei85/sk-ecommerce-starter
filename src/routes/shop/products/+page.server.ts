@@ -2,8 +2,10 @@ import type { Actions, PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ fetch }) => {
 	const getProducts = async () => {
-		const response = await fetch('https://dummyjson.com/products?limit=10');
-		const products = await response.json();
+		// const response = await fetch('https://dummyjson.com/products?limit=10');
+		// const productsJson = await response.json();
+
+		const { products } = await import('$lib/api/products');
 		return products;
 	};
 

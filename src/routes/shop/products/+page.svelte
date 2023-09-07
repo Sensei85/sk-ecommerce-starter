@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cartItems, clearCart } from '$lib/stores/cart';
+	import { cartItems, favoriteItems, clearCart } from '$lib/stores/cart';
 
 	import { ProductCard } from '$lib/components/Ecommerce';
 	import type { PageData } from './$types';
@@ -10,7 +10,7 @@
 	const { products } = productResponse;
 
 	$: {
-		console.log($cartItems);
+		console.log('cart items', $cartItems);
 	}
 </script>
 
