@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
 	import { favoriteItems, favoriteItemsCount, clearFavorites } from '$lib/stores/cart';
-	import { handleEscClose, handleSheetClose, favoriteSheetOpen } from '$lib/components/utils';
+	import { handleEscClose, handleSheetClose, favoriteSheetOpen } from '$lib/utils';
 	import { buttonVariants } from '$lib/components/ui/button';
 	import { CartItem } from '$lib/components/Ecommerce';
 

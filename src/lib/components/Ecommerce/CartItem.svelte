@@ -7,6 +7,7 @@
 		favoriteItemsCount
 	} from '$lib/stores/cart';
 	import { storeCurrency } from '$lib/stores/storeConfig';
+	import type { CartItem } from '$lib/types/cartTypes';
 
 	export let id: number | string;
 	export let title: string;
@@ -15,7 +16,7 @@
 	export let quantity: number;
 	export let thumbnail: string;
 
-	const cartItem = {
+	const cartItem: CartItem = {
 		id,
 		title,
 		price,

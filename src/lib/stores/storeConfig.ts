@@ -10,3 +10,7 @@ export const storeNumberFormat = {
 };
 
 export const localeFormatter = new Intl.NumberFormat('en-US', storeNumberFormat);
+
+export const modifyLocaleNumberFormatter = (newFormat: object) => {
+	return new Intl.NumberFormat('en-US', newFormat);
+};

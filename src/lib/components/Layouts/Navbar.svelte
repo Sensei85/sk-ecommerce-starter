@@ -1,6 +1,6 @@
 <script>
 	import { cartItemCount, favoriteItemsCount } from '$lib/stores/cart';
-	import { isSheetOpen, favoriteSheetOpen } from '$lib/components/utils';
+	import { isSheetOpen, favoriteSheetOpen } from '$lib/utils';
 </script>
 
 <header class="bg-white shadow-md sticky top-0 z-40">

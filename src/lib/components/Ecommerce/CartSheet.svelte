@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
-	import { handleEscClose, handleSheetClose, isSheetOpen } from '$lib/components/utils';
+	import { handleEscClose, handleSheetClose, isSheetOpen } from '$lib/utils';
 	import {
 		clearCart,
 		cartItems,

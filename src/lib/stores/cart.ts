@@ -9,12 +9,13 @@ export const cartItems = writable<CartItem[]>([]);
 export const favoriteItems = writable<CartItem[]>([]);
 
 // Calculate total of items in the cart
-const calculateCartTotal = () => {
+const calculateCartTotal = (): number => {
 	const cart = get(cartItems);
-	return cart.reduce((total, cartItem) => {
-		const itemTotal = cartItem.totalPrice || cartItem.price;
-		return total + itemTotal;
+	const total = cart.reduce((acc, cartItem) => {
+		const itemTotal = parseFloat(cartItem?.totalPrice?.toFixed(2) || cartItem.price.toFixed(2));
+		return acc + itemTotal;
 	}, 0);
+	return +total.toFixed(2); // Ensure the total has two decimal places
 };
 
 const createCartItem = (cartItem: CartItem) => {
@@ -180,13 +181,14 @@ export const decreaseCartItemQuantity = (id: number | string) => {
 	cartItems.update((items) => {
 		const updatedCartItems = [...items];
 		const cartItemIndex = updatedCartItems.findIndex((item) => item.id === id);
+		const cartItem = updatedCartItems[cartItemIndex];
 
 		// if item quantity is 1, then it means decreasing the quantity makes it 0, which means item should be removed from cart
-		if (cartItemIndex !== -1 && updatedCartItems[cartItemIndex].quantity === 1) {
+		if (cartItemIndex !== -1 && cartItem.quantity === 1) {
 			return updatedCartItems.filter((item) => item.id !== id);
-		} else if (cartItemIndex !== -1 && updatedCartItems[cartItemIndex].quantity > 1) {
+		} else if (cartItemIndex !== -1 && cartItem.quantity > 1) {
 			// if item is found in cart and quantity is > 1, decrease by 1
-			updatedCartItems[cartItemIndex].quantity -= 1;
+			cartItem.quantity = updatedCartItems[cartItemIndex].quantity - 1;
 			updatedCartItems[cartItemIndex] = createCartItem(updatedCartItems[cartItemIndex]);
 		}
 

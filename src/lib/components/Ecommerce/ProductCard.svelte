@@ -9,7 +9,7 @@
 	export let price: number;
 	export let stock: number;
 
-	const cartItem = {
+	const cartItem: CartItem = {
 		id,
 		title,
 		price,
