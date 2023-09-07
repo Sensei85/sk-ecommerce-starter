@@ -70,8 +70,8 @@ const calculateDiscountedPrice = (
 // Add item to cart (add one)
 export const addToCart = (cartItem: CartItem) => {
 	const items = get(cartItems);
-	const foundItem = items.find((item) => item.id === newCartItem.id);
 	const newCartItem = createCartItem(cartItem);
+	const foundItem = items.find((item) => item.id === newCartItem.id);
 
 	if (foundItem) {
 		// item is already in the cart
